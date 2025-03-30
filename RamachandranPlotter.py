@@ -156,6 +156,20 @@ def main(pdb, itmod, model_num, itchain, chain_num, plot_type, out_dir, verb, sa
 
 	plt.close()
 
+	# Calculate the average of phi and psi angles
+	avg_phi = userpdb_df["phi"].mean()
+	avg_psi = userpdb_df["psi"].mean()
+
+	# Define a filename for the averages text file
+	averages_file = str(plot_name[:-4] + '_averages.txt')
+
+	# Write the averages to the file
+	with open(averages_file, "w") as file:
+		file.write("Average phi: {}\n".format(avg_phi))
+		file.write("Average psi: {}\n".format(avg_psi))
+
+	print("Averages saved to", averages_file)
+ 
 	# plt.show()
 
 	print("Done. \n Ramachandran plot saved to", str(plot_name[:-4] + '.' + file_type))
